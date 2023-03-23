@@ -12,7 +12,12 @@
     <p id="quote"></p>
 
     <script>
-    var quotes = ['Bravo six going dark', '50,000 People Used to Live Here. Now Its a Ghost Town', 'When you are lost in the Darkness look for the Light', 'Supreme excellence consists of breaking the enemys resistance without fighting', 'War…war never changes']
+    var quotes = [  'Bravo six going dark - Cpt. Price',
+                    '50,000 People Used to Live Here. Now Its a Ghost Town - Cpt. MacMillan', 
+                    'When you are lost in the Darkness look for the Light - Craig Mazin',
+                    'Supreme excellence consists of breaking the enemys resistance without fighting - Sun Tzu ',
+                    'War…war never changes - Fallout'
+                ]
     function randomQuotes() {
         var idx = Math.floor(Math.random() * quotes.length)
         document.getElementById('quote').innerHTML = quotes[idx]
