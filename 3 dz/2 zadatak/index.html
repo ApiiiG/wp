@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" />
+        <title>Kalkulator</title>
+    </head>
+    <body>
+    
+        <form>
+            Unesi prvi broj : <input type="number" id="firstNumber" /><br>
+            Unesi drugi broj: <input type="number" id="secondNumber" /><br>
+
+            <input type="button" onClick="addBy()" Value="+" />
+            <input type="button" onClick="sub()" Value="-" />
+            <input type="button" onClick="multiplyBy()" Value="*" />
+            <input type="button" onClick="divideBy()" Value="/" />
+        </form>
+
+        <p> 
+            Rezultat je : <br>
+            <span id = "result"></span>
+        </p>
+        
+    <script>
+        function addBy()
+            {
+                num1 = document.getElementById("firstNumber").value;
+                num2 = document.getElementById("secondNumber").value;
+                document.getElementById("result").innerHTML = parseInt(num1) + parseInt(num2);
+            }
+
+        function sub() 
+            { 
+                num1 = document.getElementById("firstNumber").value;
+                num2 = document.getElementById("secondNumber").value;
+                document.getElementById("result").innerHTML = num1 - num2;
+            }
+        function multiplyBy()
+            {
+                num1 = document.getElementById("firstNumber").value;
+                num2 = document.getElementById("secondNumber").value;
+                document.getElementById("result").innerHTML = num1 * num2;
+            }
+
+        function divideBy() 
+            { 
+                num1 = document.getElementById("firstNumber").value;
+                num2 = document.getElementById("secondNumber").value;
+                document.getElementById("result").innerHTML = num1 / num2;
+            }
+    </script>
+    </body>
+</html>

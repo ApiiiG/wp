@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="randomQuotes()"></bodyonload>
+    <h1>Random quote!</h1>
+
+    <p id="quote"></p>
+
+    <script>
+    var quotes = ['Bravo six going dark', '50,000 People Used to Live Here. Now Its a Ghost Town', 'When you are lost in the Darkness look for the Light', 'Supreme excellence consists of breaking the enemys resistance without fighting', 'War…war never changes']
+    function randomQuotes() {
+        var idx = Math.floor(Math.random() * quotes.length)
+        document.getElementById('quote').innerHTML = quotes[idx]
+    }
+    </script>
+
+
+</body>
+</html>
