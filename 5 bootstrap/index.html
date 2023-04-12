@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="container-sm border mt-3 w-25 h-600 bg-light p-4">
+      <div class="display bg-dark h-25 text-end pe-3 text-primary fs-1">
+        <p class="math txt"></p>
+        <p class="result txt"></p>
+      </div>
+      <div class="container mt-5">
+        <div class="row">
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button"id="clear">C</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button" id="divide">&divide</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button" id="multiply">X</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="seven">7</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="eight">8</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="nine">9</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="four">4</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="five">5</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="six">6</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="one">1</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="two">2</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="three">3</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-8 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="zero">0</div>
+                    </div>
+                    <div class="col-4 p-1 mb-1">
+                      <div class="rounded p-1 bg-secondary text-white text-center py-3 fs-4 display-4 button" id="dot">.</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row flex-column">
+                    <div class="col-12 p-1 mb-1">
+                        <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button" id="backspace">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-backspace" viewBox="0 0 16 16">
+                              <path d="M5.83 5.146a.5.5 0 0 0 0 .708L7.975 8l-2.147 2.146a.5.5 0 0 0 .707.708l2.147-2.147 2.146 2.147a.5.5 0 0 0 .707-.708L9.39 8l2.146-2.146a.5.5 0 0 0-.707-.708L8.683 7.293 6.536 5.146a.5.5 0 0 0-.707 0z"/>
+                              <path d="M13.683 1a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-7.08a2 2 0 0 1-1.519-.698L.241 8.65a1 1 0 0 1 0-1.302L5.084 1.7A2 2 0 0 1 6.603 1h7.08zm-7.08 1a1 1 0 0 0-.76.35L1 8l4.844 5.65a1 1 0 0 0 .759.35h7.08a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1h-7.08z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-12 p-1 mb-1">
+                        <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button" id="subtract">-</div>
+                    </div>
+                    <div class="col-12 p-1 mb-1">
+                        <div class="rounded p-1 bg-dark text-white text-center py-3 fs-4 display-4 button" id="add">+</div>
+                    </div>
+                    <div class="col-12 p-1 mb-1">
+                        <div class="rounded p-1 bg-danger text-white text-center py-5 fs-2 display-4 button" id="equal">=</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

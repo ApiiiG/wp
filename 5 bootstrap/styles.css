@@ -1,0 +1,15 @@
+.button{
+  color: none;
+  background: none;
+}
+.button:hover {
+  cursor: pointer;
+}
+.h-600 {
+  height: 600px;
+}
+
+.txt{
+  font-family: 'VT323', monospace;
+  text-shadow: 0 0 15px;
+}
