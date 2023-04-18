@@ -7,75 +7,98 @@
   <title>BMI Calculator</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style>
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  background-color: #F5F5F5;
+  margin: 0;
 }
 
 h1 {
   text-align: center;
-  font-size: 2rem;
-  margin-top: 2rem;
+  margin-top: 50px;
 }
 
 form {
-  max-width: 400px;
-  margin: 0 auto;
-  background-color: white;
-  border-radius: 8px;
-  padding: 2rem;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
 }
 
-form input {
-  display: block;
-  margin-bottom: 1rem;
+label {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+input {
+  padding: 10px;
   border: none;
-  padding: 0.5rem;
-  width: 100%;
-  border-radius: 4px;
-  font-size: 1rem;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  width: 300px;
 }
 
-form button {
+button {
+  padding: 10px 20px;
   background-color: #4CAF50;
   color: white;
-  padding: 0.5rem 1rem;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 1rem;
-  font-size: 1rem;
+}
+
+button:hover {
+  background-color: #3e8e41;
 }
 
 #result {
   text-align: center;
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  font-weight: bold;
+  margin-top: 50px;
+  font-size: 24px;
 }
 
 #recommendations {
-  margin-top: 1rem;
+  text-align: center;
+  margin-top: 50px;
 }
 
-#recommendations h3 {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-#recommendations ul {
-  list-style: none;
-  margin: 0;
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
   padding: 0;
+  list-style: none;
 }
 
-#recommendations li {
-  display: inline-block;
-  margin-right: 1rem;
-  font-size: 1rem;
-  color: #666;
+li {
+  margin: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: box-shadow 0.2s ease-in-out;
+  width: 300px;
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+li:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
 </style>
 </head>
@@ -95,7 +118,7 @@ form button {
 
   <div id="result"></div>
   <div id="recommendations"></div>
-
+  
   <script>
      function calculateBMI() {
             const heightInput = document.getElementById('height');
@@ -115,12 +138,44 @@ form button {
                 recommendationDiv.innerHTML = "You are underweight. You may want to gain some weight.";
             } else if (bmi >= 18.5 && bmi <= 24.9) {
                 recommendationDiv.innerHTML = "You have a healthy weight. Keep up the good work!";
-            } else if (bmi >= 25 && bmi <= 29.9) {
+            } else if (bmi >= 25 && bmi <= 30) {
                 recommendationDiv.innerHTML = "You are overweight. You may want to lose some weight.";
             } else {
                 recommendationDiv.innerHTML = "You are obese. You may want to lose a lot of weight.";
             }
-        }
+
+             fetch('www.themealdb.com/api/json/v1/1/randomselection.php')
+            .then(response => response.json())
+            .then(data => {
+            const meal = data.meals[0];
+            const mealName = meal.strMeal;
+            const mealThumbnail = meal.strMealThumb;
+            const mealElement1 = `<img src="${mealThumbnail}" alt="${mealName}" width="400" height="350"><br>${mealName}`;
+            const mealElement2 = `<img src="${mealThumbnail}" alt="${mealName}" width="400" height="350"><br>${mealName}`;
+            const mealDiv = document.createElement('div');
+            mealDiv.innerHTML = `${mealElement1}<br>${mealElement2}`;
+            recommendationDiv.appendChild(mealDiv);
+            })
+            .catch(error => {
+               console.error('Error fetching meal data:', error);
+              });
+      
+              // Display meal data on page
+             const recommendationsDiv = document.getElementById('recommendations');
+                recommendationsDiv.innerHTML = `
+                <h3>Meal Recommendations</h3>
+                  <ul>
+                    <li>
+                      <img src="${meal1Thumbnail}" alt="${meal1Name}" width="300">
+                      <br>${meal1Name}
+                      <img src="${meal2Thumbnail}" alt="${meal2Name}" width="300">
+                      <br>${meal2Name}
+                     </li>
+                  </ul>
+                `;
+    }
+    
+
         
         
   </script>
