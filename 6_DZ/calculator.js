@@ -2,7 +2,6 @@ const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 
-
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', (req, res) => {
@@ -12,10 +11,13 @@ app.get('/', (req, res) => {
 app.post('/calculate', async (req, res) => {
   try {
     // Fetch two random meals from MealDB API
-    const response = await fetch('www.themealdb.com/api/json/v1/1/randomselection.php');
-    const json = await response.json();
-    const meal1 = json.meals[0];
-    const meal2 = json.meals[1];
+    const response1 = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const json1 = await response1.json();
+    const meal1 = json1.meals[0];
+
+    const response2 = await fetch('https://www.themealdb.com/api/json/v1/1/random.php');
+    const json2 = await response2.json();
+    const meal2 = json2.meals[0];
 
     // Extract name and thumbnail of meals
     const meal1Name = meal1.strMeal;
@@ -35,7 +37,6 @@ app.post('/calculate', async (req, res) => {
     res.status(500).send('Error fetching meals');
   }
 });
-
 
 app.listen(3000, () => {
   console.log('Server listening on port 3000');

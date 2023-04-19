@@ -58,6 +58,7 @@ button:hover {
 
 #result {
   text-align: center;
+  padding: 20px;
   margin-top: 50px;
   font-size: 24px;
 }
@@ -65,41 +66,52 @@ button:hover {
 #recommendations {
   text-align: center;
   margin-top: 50px;
+  padding: 10px;
 }
+#food {
+  text-align: center;
+  margin-top: 50px;
+  padding: 10px;
+}
+
 
 ul {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 20px;
-  padding: 0;
-  list-style: none;
-}
+       
+        list-style: none;
+      }
 
-li {
-  margin: 20px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 20px;
-  background-color: white;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  transition: box-shadow 0.2s ease-in-out;
-  width: 300px;
-  height: 380px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+      .img-container {
+        display: flexbox;
+        justify-content: center;
+        align-items: center;
+      }
 
-li:hover {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
+      .img-container img {
+        width: 200px;
+        height: 200px;
+        
+        margin: 0 10px;
+      }
 
-img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-}
+      .meal-container {
+        display: flexbox;
+        justify-content: space-evenly;
+        margin-top: 50px;
+      }
+
+      .meal-container img {
+        width: 300px;
+        height: 200px;
+        margin: 10px;
+      }
+
+      .meal-name {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+
 </style>
 </head>
 
@@ -118,6 +130,8 @@ img {
 
   <div id="result"></div>
   <div id="recommendations"></div>
+  <div id="food"></div>
+
   
   <script>
      function calculateBMI() {
@@ -144,35 +158,35 @@ img {
                 recommendationDiv.innerHTML = "You are obese. You may want to lose a lot of weight.";
             }
 
-             fetch('www.themealdb.com/api/json/v1/1/randomselection.php')
+            fetch('/calculate', {
+             method: 'POST'
+               })
             .then(response => response.json())
             .then(data => {
-            const meal = data.meals[0];
-            const mealName = meal.strMeal;
-            const mealThumbnail = meal.strMealThumb;
-            const mealElement1 = `<img src="${mealThumbnail}" alt="${mealName}" width="400" height="350"><br>${mealName}`;
-            const mealElement2 = `<img src="${mealThumbnail}" alt="${mealName}" width="400" height="350"><br>${mealName}`;
-            const mealDiv = document.createElement('div');
-            mealDiv.innerHTML = `${mealElement1}<br>${mealElement2}`;
-            recommendationDiv.appendChild(mealDiv);
+            const meal1Name = data.meal1Name;
+            const meal1Thumbnail = data.meal1Thumbnail;
+            const meal2Name = data.meal2Name;
+            const meal2Thumbnail = data.meal2Thumbnail;
+
+           // Display meal data on page
+          const foodDiv = document.getElementById('food');
+          foodDiv.innerHTML = `
+             <h3>Meal Recommendations</h3>
+              <ul>
+               <li>
+                <img src="${meal1Thumbnail}" alt="${meal1Name}" width="200">
+                <br>${meal1Name}
+                <img src="${meal2Thumbnail}" alt="${meal2Name}" width="300">
+                <br>${meal2Name}
+               </li>
+             </ul>
+             `;
             })
             .catch(error => {
                console.error('Error fetching meal data:', error);
               });
       
-              // Display meal data on page
-             const recommendationsDiv = document.getElementById('recommendations');
-                recommendationsDiv.innerHTML = `
-                <h3>Meal Recommendations</h3>
-                  <ul>
-                    <li>
-                      <img src="${meal1Thumbnail}" alt="${meal1Name}" width="300">
-                      <br>${meal1Name}
-                      <img src="${meal2Thumbnail}" alt="${meal2Name}" width="300">
-                      <br>${meal2Name}
-                     </li>
-                  </ul>
-                `;
+          
     }
     
 
