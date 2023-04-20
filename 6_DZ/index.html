@@ -70,46 +70,31 @@ button:hover {
 }
 #food {
   text-align: center;
-  margin-top: 50px;
-  padding: 10px;
+  align-content: center;
+}
+ul {
+ 
+  list-style-type: none;
+  display: flexbox; 
+  flex-wrap: wrap;
 }
 
+li {
+  text-align: center;
+  margin: 0 10px; 
+}
 
-ul {
-       
-        list-style: none;
-      }
+img {
+  display: block;
+  margin: 0 auto; 
+}
 
-      .img-container {
-        display: flexbox;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .img-container img {
-        width: 200px;
-        height: 200px;
-        
-        margin: 0 10px;
-      }
-
-      .meal-container {
-        display: flexbox;
-        justify-content: space-evenly;
-        margin-top: 50px;
-      }
-
-      .meal-container img {
-        width: 300px;
-        height: 200px;
-        margin: 10px;
-      }
-
-      .meal-name {
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-      }
+/
+li span {
+  display: block;
+  font-weight: bold;
+  margin-top: 5px;
+}
 
 
 </style>
@@ -150,12 +135,16 @@ ul {
             let recommendationDiv = document.getElementById('recommendations');
             if (bmi < 18.5) {
                 recommendationDiv.innerHTML = "You are underweight. You may want to gain some weight.";
+                recommendationDiv.innerHTML = "Maybe you need to try something of this menu?";
             } else if (bmi >= 18.5 && bmi <= 24.9) {
                 recommendationDiv.innerHTML = "You have a healthy weight. Keep up the good work!";
+                recommendationDiv.innerHTML = "Maybe you need to try something of this menu?";
             } else if (bmi >= 25 && bmi <= 30) {
                 recommendationDiv.innerHTML = "You are overweight. You may want to lose some weight.";
+                recommendationDiv.innerHTML = "Maybe you need to try something of this menu?";
             } else {
                 recommendationDiv.innerHTML = "You are obese. You may want to lose a lot of weight.";
+                recommendationDiv.innerHTML = "Maybe you need to try something of this menu?";
             }
 
             fetch('/calculate', {
@@ -175,9 +164,9 @@ ul {
               <ul>
                <li>
                 <img src="${meal1Thumbnail}" alt="${meal1Name}" width="200">
-                <br>${meal1Name}
-                <img src="${meal2Thumbnail}" alt="${meal2Name}" width="300">
-                <br>${meal2Name}
+                <span> ${meal1Name}</span>
+                <img src="${meal2Thumbnail}" alt="${meal2Name}" width="200">
+                <span>${meal2Name}</span>
                </li>
              </ul>
              `;
